@@ -1,5 +1,5 @@
 {
-  description = "Description for the project";
+  description = "flake for documents and resume and misc app I dont want installed on my base system";
 
   inputs = {
     flake-parts.url = "github:hercules-ci/flake-parts";
@@ -12,6 +12,7 @@
     ...
   }:
     flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = ["x86_64-linux"];
       perSystem = {
         pkgs,
         system,
@@ -24,8 +25,8 @@
         devShells = {
           default = pkgs.mkShell {
             packages = with pkgs; [
-              libreoffice-qt-fresh
-              texliveminimal
+              libreoffice-qt-stable
+              texliveSmall
             ];
           };
           social = pkgs.mkShell {
